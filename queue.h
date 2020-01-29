@@ -28,30 +28,37 @@ class Queue : public Object {
      *
      * @return a QueueType indicating what type the Queue will contain
      */
-    QueueType getType() {}
+    virtual QueueType getType() {}
 
     /**
      * Adds the given Object into this Queue, returning true if the insertion
      * was successful. We return a bool becuase although this interface does not
-     * specify a maximum capacity, derived classes may wish to do so.
+     * specify a maximum capacity, derived classes may wish to do so. This Queue
+     * takes ownership of the given pointer and must free it in the
+     * deconstructor.
+     *
+     * @param o the Object* to added to the Queue
      */
-    bool add(const Object & o) {}
+    bool add(Object* o) {}
 
     /**
-     * Returns a copy of the Object at the head of the Queue, but does not
-     * remove the object or modify the head.
+     * Returns the Object at the head of the Queue, but does not remove the object 
+     * or modify the head. Returns nullptr if the Queue is empty.
+     * Ownership of the returned value stays with this Queue.
      *
-     * @return a const reference to the element at the head of the Queue
+     * @return a pointer to the element at the head of the Queue
      */
-    const Object & peek() {}
+    virtual Object* peek() {}
 
     /**
      * Removes and returns the Object at the head of the Queue, modifying the
-     * head to point to the next Object, if there is one
+     * head to point to the next Object, if there is one. Returns nullptr if the
+     * Queue is empty. Ownership of the popped value goes to the function that
+     * called pop();
      *
-     * @return a const reference to the element at the head of the Queue
+     * @return a pointer to the element at the head of the Queue
      */
-    const Object & pop() {}
+    Object* pop() {}
 
     /**
      * Returns whether this Queue is empty (has no elements)
@@ -68,7 +75,9 @@ class Queue : public Object {
     size_t size() {}
 
     /**
-     * Returns whether this Queue is equal to the given Object
+     * Returns whether this Queue is equal to the given Object. This means that
+     * o points to another Queue, both Queues have the same number of elements,
+     * and the elements (in order) are equal.
      *
      * @param o the Object to compare to this Queue
      * @return whether this Queue is equal to the given Object
@@ -83,7 +92,13 @@ class Queue : public Object {
     int hashCode() {}
 
     /**
-     * Returns a string literal representing this Queue
+     * Returns a string literal representing this Queue.
+     * The string should be surrounded by [], and consist of the output of each
+     * element's toString method separated by commas and one space like so:
+     *
+     * [Element1, Element2, Element3]
+     *
+     * The elements are printed starting with the head of the Queue.
      *
      * @return a string literal representing this Queue
      */
