@@ -28,7 +28,7 @@ class Queue : public Object {
      *
      * @return a QueueType indicating what type the Queue will contain
      */
-    virtual QueueType getType() {}
+    QueueType getType() {}
 
     /**
      * Adds the given Object into this Queue, returning true if the insertion
@@ -48,7 +48,7 @@ class Queue : public Object {
      *
      * @return a pointer to the element at the head of the Queue
      */
-    virtual Object* peek() {}
+    Object* peek() {}
 
     /**
      * Removes and returns the Object at the head of the Queue, modifying the
