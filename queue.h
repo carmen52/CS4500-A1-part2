@@ -90,17 +90,4 @@ class Queue : public Object {
      * @return a hash code for this Queue
      */
     int hashCode() {}
-
-    /**
-     * Returns a string literal representing this Queue.
-     * The string should be surrounded by [], and consist of the output of each
-     * element's toString method separated by commas and one space like so:
-     *
-     * [Element1, Element2, Element3]
-     *
-     * The elements are printed starting with the head of the Queue.
-     *
-     * @return a string literal representing this Queue
-     */
-    const char* toString() {}
 };

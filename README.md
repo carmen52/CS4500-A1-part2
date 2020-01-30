@@ -1,8 +1,7 @@
 # Assignment 2 - Part 2 - Design Explanation
 
 For our Object class, we drew from our experience with Java's Object class. All Objects should be able to compare themselves with
-other Objects via an equals() function and a hashCode() function. Additionally, Objects should be able to be converted to a string for
-for use in debugging, so a toString() function was added.
+other Objects via an equals() function and a hashCode() function.
 
 We chose to design the API for a Queue, which we interpreted as a container for generic objects, accessed in a FIFO manner. Since the 
 Queue must contain objects of type Object or String, and since we cannot use templates in CwC, we needed a way for a user to know what

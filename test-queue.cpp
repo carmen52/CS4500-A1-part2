@@ -124,28 +124,6 @@ void testEquals() {
     delete q1;
 }
 
-void testToString() {
-    Queue* q1 = new Queue(QueueType::OBJECT);
-    std::string s = q1->toString();
-    t_true(s == "[]");
-
-    Object* obj1 = new Object();
-    q1->add(obj1);
-    s = q1->toString();
-    t_true(s.at(0) == '[');
-    t_true(s.at(s.length() - 1) == ']');
-
-    Object* obj2 = new Object();
-    q1->add(obj2);
-    s = q1->toString();
-    t_true(s.at(0) == '[');
-    t_true(s.at(s.length() - 1) == ']');
-    t_true(s.find(", ") != std::string::npos); 
-
-    OK("toString()");
-    delete q1;
-}
-
 int main() {
     testGetType();
     testAdd();
@@ -156,7 +134,6 @@ int main() {
     testIsEmpty();
     testSize();
     testEquals();
-    testToString();
 
     return 0;
 }
