@@ -1,34 +1,27 @@
 //lang::CwC
+#pragma once
+
+#include <cstdlib>
 
 /**
- * Represents a generic object from which all classes derive. Thus, all objects
- * implement the member functions of this class.
- */
+ * A class that represents the top of the object hierarchy.
+ * author: chasebish */
 class Object {
-  public:
-      /**
-       * Constructs a new Object variable
-       */
-      Object() {}
+public:
+  /** CONSTRUCTORS & DESTRUCTORS **/
 
-      /**
-       * Deletes this object and frees the memory it took up.
-       */
-      virtual ~Object() {}
+  /* Default Object constructor */
+  Object() {}
 
-      /**
-       * Returns whether this Object equals the Object pointed to by the given
-       * pointer.
-       */
-      virtual bool equals(Object* other) {}
+  /* Default Object destructor, to be overriden by subclasses */
+  virtual ~Object() {}
 
-      /**
-       * Returns a hash code value for this Object.
-       */
-      virtual int hashCode() {}
 
-      /**
-       * Returns a const char array representing this Object.
-       */
-      const char* toString() {}
+  /** VIRTUAL METHODS **/
+
+  /* Returns whether two objects are equal, to be overriden by subclasses */
+  virtual bool equals(Object* const obj) {}
+
+  /* Returns an object's hash value. Identical objects should have identical hashes */
+  virtual size_t hash() {}
 };
